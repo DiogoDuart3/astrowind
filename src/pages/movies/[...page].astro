@@ -1,0 +1,60 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+
+import { SITE } from "~/config.mjs";
+import movies from "~/data/movies.json";
+import BlogPostCard from "~/components/widgets/BlogPostCard.astro";
+import Pagination from "~/components/widgets/Pagination.astro";
+import MovieListCard from "~/components/widgets/MovieListCard.astro";
+
+export async function getStaticPaths({ paginate }) {
+  return paginate(movies, {
+    pageSize: SITE.postsPerPage,
+  });
+}
+
+const { page } = Astro.props;
+
+const currentPage = page.currentPage ?? 1;
+
+const title = `Filmes ${currentPage > 1 ? `— Page ${currentPage} ` : ""}— ${
+  SITE.name
+}`;
+const description = "Lista de filmes";
+const canonical = new URL(page.url.current, Astro.site);
+---
+
+<Layout meta={{ title, description, canonical }}>
+  <main class="mt-20">
+    <section class="px-4 sm:px-6 py-8 sm:py-16 lg:py-20 mx-auto max-w-3xl">
+      <header>
+        <h1
+          class="text-center text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-8 md:mb-16"
+          style="
+"
+        >
+          Lista de
+          <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-pink-500"
+            >filmes
+          </span>
+        </h1>
+      </header>
+      <ul>
+        {
+          page.data.map((movie) => (
+            <li class="mb-10 md:mb-16">
+              <MovieListCard movie={movie} />
+            </li>
+          ))
+        }
+      </ul>
+
+      {
+        (page.url.prev || page.url.next) && (
+          <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+        )
+      }
+    </section>
+  </main>
+</Layout>

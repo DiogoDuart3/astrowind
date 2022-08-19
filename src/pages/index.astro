@@ -12,23 +12,25 @@ import TwoColsFeatures from "~/components/widgets/TwoColsFeatures.astro";
 import StepsLeft from "~/components/widgets/StepsLeft.astro";
 import BlogFeaturesPosts from "~/components/widgets/BlogFeaturesPosts.astro";
 import Stats from "~/components/widgets/Stats.astro";
+import FeaturedMovies from "~/components/widgets/FeaturedMovies.astro";
 
-const title = `${SITE.name} — Your website with Astro + Tailwind CSS`;
+const title = `${SITE.name} — Filmes e séries`;
 const description =
-  "🚀 AstroWind is a free and Ready to Start template to make your website using Astro and Tailwind CSS.";
+  "🚀 MovieWorld oferece a possibilidade de assistir filmes e séries com facilidade no seu browser.";
 const canonical = new URL("", Astro.site);
 ---
 
 <Layout meta={{ title, description, canonical }}>
   <main class="mt-20">
     <Hero />
-    <BasicFeatures />
+    <FeaturedMovies />
+    <!--<BasicFeatures />
     <StepsLeft />
     <TwoColsFeatures />
     <StepsFeatures />
     <BlogFeaturesPosts />
     <BasicFAQs />
     <Stats />
-    <BasicCTA />
+    <BasicCTA />-->
   </main>
 </Layout>
