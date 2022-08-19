@@ -80,11 +80,6 @@ const imageSrc =
               }
             </time> ~ {Math.ceil(movie.readingTime)} min
           </p>-->
-          <h1
-            class="px-4 sm:px-6 max-w-3xl mx-auto text-center text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-6 md:mb-8"
-          >
-            {movie.name}
-          </h1>
 
           <div
             class="container-sm mx-auto md:max-w-none grid md:grid-cols-3 gap-6 md:gap-8"
@@ -97,9 +92,16 @@ const imageSrc =
               alt={movie.description}
               aspectRatio="16:9"
             />
-            <p class="text-md sm:text-sm flex-grow">
-              {movie.description}
-            </p>
+            <div class="m-4">
+              <h1
+                class="px-4 sm:px-6 max-w-3xl mx-auto text-center text-5xl md:text-[3.50rem] font-bold leading-tighter tracking-tighter mb-6 md:mb-8"
+              >
+                {movie.name}
+              </h1>
+              <p class="text-md sm:text-sm flex-grow">
+                {movie.description}
+              </p>
+            </div>
           </div>
         </header>
 
